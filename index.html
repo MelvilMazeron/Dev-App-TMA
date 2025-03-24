@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Demande de Congé</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body class="bg-gray-100 flex items-center justify-center min-h-screen p-6">
     <div class="max-w-4xl w-full bg-white rounded-lg shadow-md flex">
@@ -31,8 +31,13 @@
                 </div>
                 <div>
                     <label for="raison" class="block text-gray-700">Raison:</label>
-                    <textarea id="raison" name="raison" required class="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500"></textarea>
                 </div>
+                <select id="raison" name="raison" required class="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+                    <option value="">Choisir une raison</option>
+                    <option value="Congé Payé">Congé Payé</option>
+                    <option value="Congé sans solde">Congé sans solde</option>
+                    <option value="Congé Parental">Congé Parental</option>
+                </select>
                 <button type="submit" class="w-full bg-blue-500 text-white py-2 rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50">Soumettre</button>
             </form>
             <a href="validation.html" class="block mt-4 text-blue-500 hover:underline">Aller à la validation des demandes</a>
