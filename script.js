@@ -8,12 +8,14 @@ document.addEventListener('DOMContentLoaded', () => {
             event.preventDefault();
 
             const nom = document.getElementById('nom').value;
+            const prenom = document.getElementById('prenom').value;
             const dateDebut = document.getElementById('dateDebut').value;
             const dateFin = document.getElementById('dateFin').value;
             const raison = document.getElementById('raison').value;
 
             const demande = {
                 nom,
+                prenom,
                 dateDebut,
                 dateFin,
                 raison,
@@ -37,6 +39,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 li.classList.add('p-4', 'border', 'rounded-lg', 'shadow-sm');
                 li.innerHTML = `
                     <strong>Nom:</strong> ${demande.nom}<br>
+                    <strong>Prenom:</strong> ${demande.prenom}<br>
                     <strong>Date de début:</strong> ${demande.dateDebut}<br>
                     <strong>Date de fin:</strong> ${demande.dateFin}<br>
                     <strong>Raison:</strong> ${demande.raison}<br>
@@ -56,6 +59,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 li.innerHTML = `
                     <div class="mb-4">
                         <strong>Nom:</strong> ${demande.nom}<br>
+                        <strong>Prenom:</strong> ${demande.prenom}<br>
                         <strong>Date de début:</strong> ${demande.dateDebut}<br>
                         <strong>Date de fin:</strong> ${demande.dateFin}<br>
                         <strong>Raison:</strong> ${demande.raison}<br>
