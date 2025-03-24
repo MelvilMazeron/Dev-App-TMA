@@ -1,8 +1,17 @@
 document.addEventListener('DOMContentLoaded', () => {
     const form = document.getElementById('congeForm');
     const historique = document.getElementById('historique');
-    const demandesValidation = document.getElementById('demandesValidation');
+    const demandesValidation = document.getElementById('demandesValidation'); 
 
+    const today = new Date().toISOString().split('T')[0];
+    document.getElementById('dateDebut').setAttribute('min', today);
+    document.getElementById('dateFin').setAttribute('min', today);
+
+
+    const today = new Date().toISOString().split('T')[0];
+    document.getElementById('dateDebut').setAttribute('min', today);
+    document.getElementById('dateFin').setAttribute('min', today);
+    
     if (form) {
         form.addEventListener('submit', function(event) {
             event.preventDefault();
