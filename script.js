@@ -24,7 +24,6 @@ document.addEventListener('DOMContentLoaded', () => {
     if (form) {
         form.addEventListener('submit', function(event) {
             event.preventDefault();
-
             const nom = document.getElementById('nom').value;
             const prenom = document.getElementById('prenom').value;
             const secondPrenom = document.getElementById('secondPrenom').value;
