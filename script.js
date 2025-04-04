@@ -2,11 +2,24 @@ document.addEventListener('DOMContentLoaded', () => {
     const form = document.getElementById('congeForm');
     const historique = document.getElementById('historique');
     const demandesValidation = document.getElementById('demandesValidation'); 
+    const raisonSelect = document.getElementById('raison');
+    const autreRaisonContainer = document.getElementById('autreRaisonContainer');
+    const autreRaisonInput = document.getElementById('autreRaison');
 
     const today = new Date().toISOString().split('T')[0];
     document.getElementById('dateDebut').setAttribute('min', today);
     document.getElementById('dateFin').setAttribute('min', today);
 
+
+    raisonSelect.addEventListener('change', () => {
+        if (raisonSelect.value === 'Autre') {
+            autreRaisonContainer.classList.remove('hidden');
+            autreRaisonInput.setAttribute('required', 'true');
+        } else {
+            autreRaisonContainer.classList.add('hidden');
+            autreRaisonInput.removeAttribute('required');
+        }
+    });
 
     if (form) {
         form.addEventListener('submit', function(event) {
@@ -16,7 +29,12 @@ document.addEventListener('DOMContentLoaded', () => {
             const prenom = document.getElementById('prenom').value;
             const dateDebut = document.getElementById('dateDebut').value;
             const dateFin = document.getElementById('dateFin').value;
-            const raison = document.getElementById('raison').value;
+            let raison = raisonSelect.value;
+
+            // si autre choisi autre apparaît dans raison
+            if (raison === 'Autre') {
+                raison = autreRaisonInput.value;
+            }
 
             const demande = {
                 nom,
@@ -33,6 +51,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             afficherHistorique(demandes);
             form.reset();
+            autreRaisonContainer.classList.add('hidden'); 
         });
     }
 
