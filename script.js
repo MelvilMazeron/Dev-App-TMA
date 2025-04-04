@@ -27,6 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             const nom = document.getElementById('nom').value;
             const prenom = document.getElementById('prenom').value;
+            const secondPrenom = document.getElementById('secondPrenom').value;
             const dateDebut = document.getElementById('dateDebut').value;
             const dateFin = document.getElementById('dateFin').value;
             let raison = raisonSelect.value;
@@ -39,6 +40,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const demande = {
                 nom,
                 prenom,
+                secondPrenom,
                 dateDebut,
                 dateFin,
                 raison,
@@ -64,6 +66,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 li.innerHTML = `
                     <strong>Nom:</strong> ${demande.nom}<br>
                     <strong>Prenom:</strong> ${demande.prenom}<br>
+                    ${demande.secondPrenom ? `<strong>Deuxième prénom:</strong> ${demande.secondPrenom}<br>` : ''}
                     <strong>Date de début:</strong> ${demande.dateDebut}<br>
                     <strong>Date de fin:</strong> ${demande.dateFin}<br>
                     <strong>Raison:</strong> ${demande.raison}<br>
@@ -84,6 +87,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     <div class="mb-4">
                         <strong>Nom:</strong> ${demande.nom}<br>
                         <strong>Prenom:</strong> ${demande.prenom}<br>
+                        <strong>Deuxième prénom:</strong> ${demande.secondPrenom}<br>
                         <strong>Date de début:</strong> ${demande.dateDebut}<br>
                         <strong>Date de fin:</strong> ${demande.dateFin}<br>
                         <strong>Raison:</strong> ${demande.raison}<br>
