@@ -2,23 +2,47 @@ document.addEventListener('DOMContentLoaded', () => {
     const form = document.getElementById('congeForm');
     const historique = document.getElementById('historique');
     const demandesValidation = document.getElementById('demandesValidation'); 
+    const raisonSelect = document.getElementById('raison');
+    const autreRaisonContainer = document.getElementById('autreRaisonContainer');
+    const autreRaisonInput = document.getElementById('autreRaison');
 
     const today = new Date().toISOString().split('T')[0];
     document.getElementById('dateDebut').setAttribute('min', today);
     document.getElementById('dateFin').setAttribute('min', today);
 
+
     
+
+
+    raisonSelect.addEventListener('change', () => {
+        if (raisonSelect.value === 'Autre') {
+            autreRaisonContainer.classList.remove('hidden');
+            autreRaisonInput.setAttribute('required', 'true');
+        } else {
+            autreRaisonContainer.classList.add('hidden');
+            autreRaisonInput.removeAttribute('required');
+        }
+    });
+
     if (form) {
         form.addEventListener('submit', function(event) {
             event.preventDefault();
-
             const nom = document.getElementById('nom').value;
+            const prenom = document.getElementById('prenom').value;
+            const secondPrenom = document.getElementById('secondPrenom').value;
             const dateDebut = document.getElementById('dateDebut').value;
             const dateFin = document.getElementById('dateFin').value;
-            const raison = document.getElementById('raison').value;
+            let raison = raisonSelect.value;
+
+            // si autre choisi autre apparaît dans raison
+            if (raison === 'Autre') {
+                raison = autreRaisonInput.value;
+            }
 
             const demande = {
                 nom,
+                prenom,
+                secondPrenom,
                 dateDebut,
                 dateFin,
                 raison,
@@ -31,6 +55,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             afficherHistorique(demandes);
             form.reset();
+            autreRaisonContainer.classList.add('hidden'); 
         });
     }
 
@@ -173,6 +198,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 li.classList.add('p-4', 'border', 'rounded-lg', 'shadow-sm');
                 li.innerHTML = `
                     <strong>Nom:</strong> ${demande.nom}<br>
+                    <strong>Prenom:</strong> ${demande.prenom}<br>
+                    ${demande.secondPrenom ? `<strong>Deuxième prénom:</strong> ${demande.secondPrenom}<br>` : ''}
                     <strong>Date de début:</strong> ${demande.dateDebut}<br>
                     <strong>Date de fin:</strong> ${demande.dateFin}<br>
                     <strong>Raison:</strong> ${demande.raison}<br>
@@ -192,6 +219,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 li.innerHTML = `
                     <div class="mb-4">
                         <strong>Nom:</strong> ${demande.nom}<br>
+                        <strong>Prenom:</strong> ${demande.prenom}<br>
+                        <strong>Deuxième prénom:</strong> ${demande.secondPrenom}<br>
                         <strong>Date de début:</strong> ${demande.dateDebut}<br>
                         <strong>Date de fin:</strong> ${demande.dateFin}<br>
                         <strong>Raison:</strong> ${demande.raison}<br>
