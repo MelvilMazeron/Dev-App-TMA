@@ -10,7 +10,7 @@
 </head>
 <body>
     <script>
-        // Redirigez vers la page de connexion si l'utilisateur n'est pas connecté
+        // Ramène la page de connexion 
         if (localStorage.getItem('isLoggedIn') !== 'true') {
             alert('Vous devez être connecté pour accéder à cette page.');
             window.location.href = 'index.html';
@@ -35,12 +35,12 @@ document.addEventListener('DOMContentLoaded', function () {
     const historique = document.getElementById('historique');
     const demandes = JSON.parse(localStorage.getItem('demandes')) || [];
 
-    // Afficher un message si l'utilisateur n'est pas connecté
+    // Pop up message pas connecté
     if (!isLoggedIn) {
         nonConnecteMessage.classList.remove('hidden');
     }
 
-    // Afficher les demandes
+    // Afficher demandes
     demandes.forEach((demande) => {
         const li = document.createElement('li');
         li.classList.add('p-3', 'border', 'rounded');

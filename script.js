@@ -9,26 +9,26 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('dateDebut').setAttribute('min', today);
     document.getElementById('dateFin').setAttribute('min', today);
     
-    const welcomeSection = document.getElementById('welcomeSection');
+    const Bienvenue = document.getElementById('Bienvenue');
     const loginForm = document.getElementById('loginForm');
     const mainContent = document.getElementById('mainContent');
     const historiqueButton = document.getElementById('historiqueButton');
     const showLoginButton = document.getElementById('showLoginButton');
     const logoutButton = document.getElementById('logoutButton');
 
-    // Afficher le formulaire de connexion lorsque l'utilisateur clique sur "Se connecter"
+    // connexion 
     showLoginButton.addEventListener('click', () => {
         loginForm.classList.remove('hidden');
         mainContent.classList.add('hidden');
     });
 
-    // Gestion de la déconnexion
+    // déconnexion
     logoutButton.addEventListener('click', () => {
         localStorage.removeItem('isLoggedIn');
         checkLoginStatus();
     });
 
-    // Vérifiez si l'utilisateur est connecté
+    // Vérifiez connection
     function checkLoginStatus() {
         const isLoggedIn = localStorage.getItem('isLoggedIn');
         if (isLoggedIn === 'true') {
@@ -46,13 +46,13 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // Gestion de la soumission du formulaire de connexion
+    // Gestion connexion
     document.getElementById('login').addEventListener('submit', (event) => {
         event.preventDefault();
         const username = document.getElementById('username').value;
         const password = document.getElementById('password').value;
 
-        // Simulez une vérification des identifiants
+        // vérification des identifiants
         if (username === 'admin' && password === 'admin') {
             localStorage.setItem('isLoggedIn', 'true');
             checkLoginStatus();
@@ -61,7 +61,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Vérifiez l'état de connexion au chargement de la page
+    // Vérifiez connexion
     checkLoginStatus();
 
     raisonSelect.addEventListener('change', () => {
