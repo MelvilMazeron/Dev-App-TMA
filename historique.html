@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+    <center>
+        <div class="w-1/2 p-6">
+            <h2 class="text-xl font-semibold mb-2">Historique des Demandes</h2>
+            <ul id="historique" class="space-y-4"></ul>
+        </div>
+    </center>
+    <script src="script.js"></script>
+</body>
+<script>
+
+document.addEventListener('DOMContentLoaded', function () {
+    const demandes = JSON.parse(localStorage.getItem('demandes')) || [];
+    const historique = document.getElementById('historique');
+
+    demandes.forEach((demande, index) => {
+        const li = document.createElement('li');
+        li.classList.add('p-3', 'border', 'rounded');
+
+        li.innerHTML = `
+            <strong>${demande.nom || 'Inconnu'} ${demande.prenom || ''}</strong><br>
+            Du ${demande.dateDebut} au ${demande.dateFin}<br>
+            Raison : ${demande.raison} ${demande.raison === 'Autre' ? '(' + demande.autreRaison + ')' : ''}
+        `;
+
+        historique.appendChild(li);
+
+        localStorage.removeItem('demandes');
+    });
+});
+
+</script>
+</html>
