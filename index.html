@@ -9,8 +9,30 @@
 </head>
 <body class="bg-gray-100 flex items-center justify-center min-h-screen p-6">
     <div class="max-w-4xl w-full bg-white rounded-lg shadow-md flex">
+        <div id="loginForm" class="w-full p-6 hidden">
+            <h1 class="text-2xl font-bold mb-4 text-center">Connexion</h1>
+            <form id="login" class="space-y-4">
+                <div>
+                    <label for="username" class="block text-gray-700">Nom d'utilisateur:</label>
+                    <input type="text" id="username" name="username" required class="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+                </div>
+                <div>
+                    <label for="password" class="block text-gray-700">Mot de passe:</label>
+                    <input type="password" id="password" name="password" required class="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+                </div>
+                <button type="submit" class="w-full bg-blue-500 text-white py-2 rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50">Se connecter</button>
+            </form>
+        </div>
         <!-- Formulaire à gauche -->
-        <div class="w-1/2 p-6 border-r">
+        <body class="bg-gray-100 flex items-center justify-center min-h-screen p-6">
+            <div class="max-w-4xl w-full bg-white rounded-lg shadow-md flex flex-col items-center">
+                <!-- Bouton pour afficher le formulaire de connexion -->
+                <div id="welcomeSection" class="w-full p-6 text-center">
+                    <h1 class="text-2xl font-bold mb-4">Bienvenue sur le site de Demande de Congé</h1>
+                    <button id="showLoginButton" class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50">
+                        Se connecter
+                    </button>
+                </div>
             <h1 class="text-2xl font-bold mb-4">Déposer une Demande de Congé</h1>
             <form id="congeForm" class="space-y-4">
                 <div>
@@ -54,6 +76,10 @@
             </button>
             <a href="validation.html" class="block mt-4 text-blue-500 hover:underline">Aller à la validation des demandes</a>
         </div>
+    </div>
+        <button id="logoutButton" class="bg-red-500 text-white px-4 py-2 rounded-md hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50 hidden ml-2">
+            Se déconnecter
+        </button>
     </div>
     <script src="script.js"></script>
 </body>

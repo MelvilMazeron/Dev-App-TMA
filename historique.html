@@ -9,9 +9,19 @@
 
 </head>
 <body>
+    <script>
+        // Redirigez vers la page de connexion si l'utilisateur n'est pas connecté
+        if (localStorage.getItem('isLoggedIn') !== 'true') {
+            alert('Vous devez être connecté pour accéder à cette page.');
+            window.location.href = 'index.html';
+        }
+    </script>
     <center>
         <div class="w-1/2 p-6">
             <h2 class="text-xl font-semibold mb-2">Historique des Demandes</h2>
+            <div id="nonConnecteMessage" class="text-red-500 mb-4 hidden">
+                Vous n'êtes pas connecté. Certaines fonctionnalités peuvent être limitées.
+            </div>
             <ul id="historique" class="space-y-4"></ul>
         </div>
     </center>
@@ -20,23 +30,29 @@
 <script>
 
 document.addEventListener('DOMContentLoaded', function () {
-    const demandes = JSON.parse(localStorage.getItem('demandes')) || [];
+    const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+    const nonConnecteMessage = document.getElementById('nonConnecteMessage');
     const historique = document.getElementById('historique');
+    const demandes = JSON.parse(localStorage.getItem('demandes')) || [];
 
-    demandes.forEach((demande, index) => {
+    // Afficher un message si l'utilisateur n'est pas connecté
+    if (!isLoggedIn) {
+        nonConnecteMessage.classList.remove('hidden');
+    }
+
+    // Afficher les demandes
+    demandes.forEach((demande) => {
         const li = document.createElement('li');
         li.classList.add('p-3', 'border', 'rounded');
-
         li.innerHTML = `
             <strong>${demande.nom || 'Inconnu'} ${demande.prenom || ''}</strong><br>
             Du ${demande.dateDebut} au ${demande.dateFin}<br>
             Raison : ${demande.raison} ${demande.raison === 'Autre' ? '(' + demande.autreRaison + ')' : ''}
         `;
-
         historique.appendChild(li);
-
     });
 });
+
 
 </script>
 </html>
