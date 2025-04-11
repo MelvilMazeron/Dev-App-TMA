@@ -11,9 +11,6 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('dateFin').setAttribute('min', today);
 
 
-    
-
-
     raisonSelect.addEventListener('change', () => {
         if (raisonSelect.value === 'Autre') {
             autreRaisonContainer.classList.remove('hidden');
